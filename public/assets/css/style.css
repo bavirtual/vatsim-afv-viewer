@@ -1,0 +1,108 @@
+.clickablerow {
+    cursor: pointer;
+}
+
+.discord-panel {
+    font-size: 0.9em;
+}
+
+.discord-panel > table > tbody > tr > td {
+    padding: 2px;
+}
+
+.discord-dnd {
+    color: #F04747;
+}
+
+.discord-idle {
+    color: #FAA61A;
+}
+
+.discord-online {
+    color: #43B581;
+}
+
+.discord-offline {
+    color: #747F8D;
+}
+
+.discord-channel {
+    color: #0c9ae9;
+}
+
+.discord-category {
+    color: #3633af;
+}
+
+.discord-user {
+    color: #44a84b;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.cursor-default > tbody > tr > td,
+.cursor-default > tbody > tr > th,
+.cursor-default > tfoot > tr > td,
+.cursor-default > tfoot > tr > th,
+.cursor-default > thead > tr > td,
+.cursor-default > thead > tr > th {
+    text-align: left;
+    cursor: default !important;
+}
+
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+    padding: 0;
+}
+
+.table-condensed-min > thead > tr > th,
+.table-condensed-min > tbody > tr > th,
+.table-condensed-min > tfoot > tr > th,
+.table-condensed-min > thead > tr > td,
+.table-condensed-min > tbody > tr > td,
+.table-condensed-min > tfoot > tr > td {
+    padding: 5px;
+}
+
+.nav-stacked > li {
+    float: none;
+}
+
+.nav-stacked > li + li {
+    margin-top: 2px;
+    margin-left: 0;
+}
+
+.hidden_row {
+    padding: 0 !important;
+}
+
+.open-panel {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.swal-icon--info {
+    border-color: #7CD1F9;
+}
+
+.swal-icon--info:after, .swal-icon--info:before {
+    background-color: #7CD1F9;
+}
