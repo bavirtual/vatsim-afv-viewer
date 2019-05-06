@@ -11,11 +11,6 @@ class PageController extends Controller
         return view('index');
     }
 
-    public function atisMap()
-    {
-        return view('atis-map');
-    }
-
     public function atisMapData()
     {
         $client = new Client(['verify' => false ]);

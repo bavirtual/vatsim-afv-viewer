@@ -79,30 +79,13 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item">
                     <a class="navbar-brand" href="/">
-                        <img class="brand-logo" alt="BAVirtual Logo" src="{{ asset_path('img/logo.png') }}">
+                        <img class="brand-logo" alt="VATSIM Logo" src="{{ asset_path('img/vatsim_0.png') }}">
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- ////////////////////////////////////////////////////////////////////////////-->
-<div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-dark navbar-without-dd-arrow navbar-shadow" role="navigation" data-menu="menu-wrapper" style="z-index: 1000000">
-    <div class="navbar-container main-menu-content" data-menu="menu-container">
-        <ul class="nav navbar-nav mr-auto" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('index') }}">
-                    <i class="la la-home"></i><span>Index</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('atis-map') }}">
-                    <i class="la la-home"></i><span>VATSIM ATIS Map</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
 
 <div class="app-content content">
     <div class="content-wrapper">

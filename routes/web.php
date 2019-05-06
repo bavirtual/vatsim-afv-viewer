@@ -13,5 +13,4 @@
 
 Route::get('/', 'PageController@index')->name('index');
 
-Route::get('/atis-map', 'PageController@atisMap')->name('atis-map');
 Route::get('/atis-map-data', 'PageController@atisMapData')->name('atis-map-data');

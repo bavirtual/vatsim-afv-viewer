@@ -816,9 +816,9 @@ select.form-control {
       height: auto; } }
 
 .navbar-light {
-  background: #FFFFFF; }
+  background: #F4F5FA; }
   .navbar-light.navbar-horizontal {
-    background: #FFFFFF; }
+    background: #F4F5FA; }
   .navbar-light .navbar-nav li {
     line-height: 1; }
   .navbar-light .navbar-nav .active.nav-link {
