@@ -1,7 +1,7 @@
 @extends('_layouts.master')
 
 @section('pageTitle')
-    ATIS Map - <span id="online-count"><i class="la la-refresh la-spin"></i></span>
+    <span id="online-count"><i class="la la-refresh la-spin"></i></span>
 @endsection
 
 
