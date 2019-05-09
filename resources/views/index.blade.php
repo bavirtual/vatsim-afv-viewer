@@ -112,12 +112,9 @@
                     for (var i = 0; i < mapMarkers.length; i++) {
                         map.removeLayer(mapMarkers[i]);
                     }
-                    mapMarkers = mapMarkers.filter(function(item) {
-                        return item === 'test';
-                    });
-                    onlineATIS = onlineATIS.filter(function(item) {
-                        return item === 'test';
-                    });
+                    $('path.leaflet-interactive').remove();
+                    mapMarkers = [];
+                    onlineATIS = [];
                     $('#atisList').html('');
                     data.forEach(function (atis) {
                         var callsign = atis.callsign;
@@ -161,7 +158,7 @@
                     }
                 }
             });
-        }, 60000);
+        }, 5000);
 
     </script>
 
