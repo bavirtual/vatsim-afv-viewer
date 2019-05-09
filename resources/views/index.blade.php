@@ -79,9 +79,10 @@
                         });
                     }
 
-                    var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
-
-                    L.circle([lat, lon], {radius: RadiusMeters, fillOpacity: 0}).addTo(map);
+                    if(!callsign.includes('ATIS')) {
+                        var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
+                        L.circle([lat, lon], {radius: RadiusMeters, fillOpacity: 0}).addTo(map);
+                    }
 
                     marker.addTo(map).bindPopup(content);
                     mapMarkers.push(marker);
@@ -136,9 +137,10 @@
                             }),
                         });
 
-                        var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
-
-                        L.circle([lat, lon], {radius: RadiusMeters, fillOpacity: 0}).addTo(map);
+                        if(!callsign.includes('ATIS')) {
+                            var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
+                            L.circle([lat, lon], {radius: RadiusMeters, fillOpacity: 0}).addTo(map);
+                        }
 
                         marker.addTo(map).bindPopup(content);
                         mapMarkers.push(marker);
