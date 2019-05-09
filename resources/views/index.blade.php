@@ -126,13 +126,23 @@
                         var content = '<b>' + callsign + '</b><br>';
                         content += frequency;
 
-                        var marker = L.marker([lat, lon], {
-                            icon: L.icon({
-                                iconUrl: '{{ asset_path('img/map/pin.png') }}',
-                                iconSize: [10, 17],
-                                iconAnchor: [5, 17]
-                            }),
-                        });
+                        if(callsign.includes('ATIS')) {
+                            var marker = L.marker([lat, lon], {
+                                icon: L.icon({
+                                    iconUrl: '{{ asset_path('img/map/pin.png') }}',
+                                    iconSize: [10, 17],
+                                    iconAnchor: [5, 17]
+                                }),
+                            });
+                        } else {
+                            var marker = L.marker([lat, lon], {
+                                icon: L.icon({
+                                    iconUrl: '{{ asset_path('img/map/red-pin.png') }}',
+                                    iconSize: [10, 16],
+                                    iconAnchor: [5, 16]
+                                }),
+                            });
+                        }
 
                         if(!callsign.includes('ATIS')) {
                             var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
