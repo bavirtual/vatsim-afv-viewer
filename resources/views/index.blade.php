@@ -117,41 +117,43 @@
                     onlineATIS = [];
                     $('#atisList').html('');
                     data.forEach(function (atis) {
-                        var callsign = atis.callsign;
-                        var frequency = atis.transceivers[0].frequency;
-                        var lat = atis.transceivers[0].latDeg;
-                        var lon = atis.transceivers[0].lonDeg;
-                        var msl = atis.transceivers[0].altMslM;
+                        atis['transceivers'].forEach(function (transceiver) {
+                            var callsign = atis.callsign;
+                            var frequency = transceiver.frequency;
+                            var lat = transceiver.latDeg;
+                            var lon = transceiver.lonDeg;
+                            var msl = transceiver.altMslM;
 
-                        var content = '<b>' + callsign + '</b><br>';
-                        content += frequency;
+                            var content = '<b>' + callsign + '</b><br>';
+                            content += frequency;
 
-                        if(callsign.includes('ATIS')) {
-                            var marker = L.marker([lat, lon], {
-                                icon: L.icon({
-                                    iconUrl: '{{ asset_path('img/map/pin.png') }}',
-                                    iconSize: [10, 17],
-                                    iconAnchor: [5, 17]
-                                }),
-                            });
-                        } else {
-                            var marker = L.marker([lat, lon], {
-                                icon: L.icon({
-                                    iconUrl: '{{ asset_path('img/map/red-pin.png') }}',
-                                    iconSize: [10, 16],
-                                    iconAnchor: [5, 16]
-                                }),
-                            });
-                        }
+                            if(callsign.includes('ATIS')) {
+                                var marker = L.marker([lat, lon], {
+                                    icon: L.icon({
+                                        iconUrl: '{{ asset_path('img/map/pin.png') }}',
+                                        iconSize: [10, 17],
+                                        iconAnchor: [5, 17]
+                                    }),
+                                });
+                            } else {
+                                var marker = L.marker([lat, lon], {
+                                    icon: L.icon({
+                                        iconUrl: '{{ asset_path('img/map/red-pin.png') }}',
+                                        iconSize: [10, 16],
+                                        iconAnchor: [5, 16]
+                                    }),
+                                });
+                            }
 
-                        if(!callsign.includes('ATIS')) {
-                            var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
-                            L.circle([lat, lon], {radius: RadiusMeters, fillOpacity: 0}).addTo(map);
-                        }
+                            if(!callsign.includes('ATIS')) {
+                                var RadiusMeters = (1.25 * Math.sqrt(msl * 3.28084)) * 1852;
+                                L.circle([lat, lon], {radius: RadiusMeters, fillOpacity: 0}).addTo(map);
+                            }
 
-                        marker.addTo(map).bindPopup(content);
-                        mapMarkers.push(marker);
-                        onlineATIS.push({callsign: callsign, freq: frequency});
+                            marker.addTo(map).bindPopup(content);
+                            mapMarkers.push(marker);
+                            onlineATIS.push({callsign: callsign, freq: frequency});
+                        });
                     });
 
                     if(mapMarkers.length > 0) {
