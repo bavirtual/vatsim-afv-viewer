@@ -281,7 +281,6 @@
                     }
 
                     if(mapMarkers.length > 0) {
-                        map.fitBounds(L.featureGroup(mapMarkers).getBounds());
                         onlineTransceivers.sort(function(a, b) {
                             return ((a.callsign < b.callsign) ? -1 : ((a.callsign > b.callsign) ? 1 : 0));
                         });
