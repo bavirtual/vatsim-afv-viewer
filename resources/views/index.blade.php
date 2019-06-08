@@ -172,9 +172,9 @@
                         map.removeLayer(mapMarkers[i]);
                     }
                     $('path.leaflet-interactive').remove();
-                    mapMarkers = [];
+                    clients = [];
                     onlineTransceivers = [];
-                    $('#atisList').html('');
+                    $('#atis-list').html('');
                     data.forEach(function (client) {
                         client['transceivers'].forEach(function (transceiver) {
                             var callsign = client.callsign;
@@ -260,12 +260,12 @@
                         });
                         $('#online-count').html(clients.length + ' Voice Clients Connected');
                     } else {
-                        $('#atisList').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
+                        $('#atis-list').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
                         $('#online-count').html('0 Voice Clients Connected');
                     }
                 }
             });
-        }, 30000);
+        }, 5000);
 
     </script>
 
