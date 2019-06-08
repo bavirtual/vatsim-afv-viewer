@@ -201,15 +201,21 @@
                     data.forEach(function (client) {
                         client['transceivers'].forEach(function (transceiver) {
                             var callsign = client.callsign;
+                            var name = client.member_name;
                             var frequency = transceiver.frequency;
                             var lat = transceiver.latDeg;
                             var lon = transceiver.lonDeg;
                             var msl = transceiver.altMslM;
 
                             var content = '<b>' + callsign +'</b><br>';
+                            content += '<b>' + name +'</b><br>';
+                            if(client.type == 'pilot') {
+                                content += client.altitude + 'ft<br>';
+                                content += client.route + '<br>';
+                            }
                             content += frequency;
 
-                            if(callsign.includes('ATIS')) {
+                            if(client.type == 'atis') {
                                 var marker = L.marker([lat, lon], {
                                     icon: L.icon({
                                         iconUrl: '{{ asset_path('img/map/pin.png') }}',
@@ -218,7 +224,8 @@
                                         popupAnchor: [0, -17]
                                     }),
                                 });
-                            } else if (callsign.includes('_DEL') || callsign.includes('_GND') || callsign.includes('_TWR') || callsign.includes('_APP') || callsign.includes('_DEP') || callsign.includes('_CTR') || callsign.includes('_FSS')) { // controller
+                                // } else if (callsign.includes('_DEL') || callsign.includes('_GND') || callsign.includes('_TWR') || callsign.includes('_APP') || callsign.includes('_DEP') || callsign.includes('_CTR') || callsign.includes('_FSS')) { // controller
+                            } else if(client.type == 'controller') { // controller
                                 var marker = L.marker([lat, lon], {
                                     icon: L.icon({
                                         iconUrl: '{{ asset_path('img/map/green-pin.png') }}',
@@ -228,14 +235,27 @@
                                     }),
                                 });
                             } else { // plane
-                                var marker = L.marker([lat, lon], {
-                                    icon: L.icon({
-                                        iconUrl: '{{ asset_path('img/map/VATSIM/DEFAULT.png') }}',
-                                        iconSize: [30, 30],
-                                        iconAnchor: [15, 15],
-                                        popupAnchor: [0, -15]
-                                    }),
-                                });
+                                if(client.heading == 'N/A') {
+                                    var marker = L.marker([lat, lon], {
+                                        icon: L.icon({
+                                            iconUrl: '{{ asset_path('img/map/IVAO/DEFAULT.png') }}',
+                                            iconSize: [30, 30],
+                                            iconAnchor: [15, 15],
+                                            popupAnchor: [0, -15]
+                                        }),
+                                    });
+                                } else {
+                                    var marker = L.marker([lat, lon], {
+                                        icon: L.icon({
+                                            iconUrl: '{{ asset_path('img/map/IVAO/DEFAULT.png') }}',
+                                            iconSize: [30, 30],
+                                            iconAnchor: [15, 15],
+                                            popupAnchor: [0, -15]
+                                        }),
+                                        rotationAngle: client.heading,
+                                        rotationOrigin: 'center'
+                                    });
+                                }
                             }
 
                             if (callsign.includes('_DEL') || callsign.includes('_GND') || callsign.includes('_TWR') || callsign.includes('_APP') || callsign.includes('_DEP') || callsign.includes('_CTR') || callsign.includes('_FSS')) {
@@ -291,7 +311,7 @@
                     }
                 }
             });
-        }, 99999999);
+        }, 5000);
 
     </script>
 
