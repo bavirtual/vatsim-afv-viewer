@@ -119,10 +119,10 @@
 
                     // [{client: '', frequencies:['123.000','122.800']]]
                     onlineTransceivers.forEach(function(onlineTransceiver) {
-                        var clientIndex = clients.findIndex(x => x.client === onlineTransceiver.callsign);
+                        var clientIndex = clients.findIndex(x => x.callsign === onlineTransceiver.callsign);
                         if(clientIndex > -1) {
                             // add the frequency to array
-                            var client = clients.find(x => x.client === onlineTransceiver.callsign);
+                            var client = clients.find(x => x.callsign === onlineTransceiver.callsign);
                             clients.splice(clientIndex, 1);
                             client['frequencies'].push(onlineTransceiver.freq);
                             clients.push(client);
@@ -242,10 +242,10 @@
 
                         // [{client: '', frequencies:['123.000','122.800']]]
                         onlineTransceivers.forEach(function(onlineTransceiver) {
-                            var clientIndex = clients.findIndex(x => x.client === onlineTransceiver.callsign);
+                            var clientIndex = clients.findIndex(x => x.callsign === onlineTransceiver.callsign);
                             if(clientIndex > -1) {
                                 // add the frequency to array
-                                var client = clients.find(x => x.client === onlineTransceiver.callsign);
+                                var client = clients.find(x => x.callsign === onlineTransceiver.callsign);
                                 clients.splice(clientIndex, 1);
                                 client['frequencies'].push(onlineTransceiver.freq);
                                 clients.push(client);
