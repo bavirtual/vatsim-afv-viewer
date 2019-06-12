@@ -100,7 +100,7 @@
                             if(client.heading == 'N/A') {
                                 var marker = L.marker([lat, lon], {
                                     icon: L.icon({
-                                        iconUrl: '{{ asset_path('img/map/IVAO/DEFAULT.png') }}',
+                                        iconUrl: '{{ asset_path('img/map/plane.png') }}',
                                         iconSize: [30, 30],
                                         iconAnchor: [15, 15],
                                         popupAnchor: [0, -15]
@@ -109,7 +109,7 @@
                             } else {
                                 var marker = L.marker([lat, lon], {
                                     icon: L.icon({
-                                        iconUrl: '{{ asset_path('img/map/IVAO/DEFAULT.png') }}',
+                                        iconUrl: '{{ asset_path('img/map/plane.png') }}',
                                         iconSize: [30, 30],
                                         iconAnchor: [15, 15],
                                         popupAnchor: [0, -15]
@@ -238,7 +238,7 @@
                                 if(client.heading == 'N/A') {
                                     var marker = L.marker([lat, lon], {
                                         icon: L.icon({
-                                            iconUrl: '{{ asset_path('img/map/IVAO/DEFAULT.png') }}',
+                                            iconUrl: '{{ asset_path('img/map/plane.png') }}',
                                             iconSize: [30, 30],
                                             iconAnchor: [15, 15],
                                             popupAnchor: [0, -15]
@@ -247,7 +247,7 @@
                                 } else {
                                     var marker = L.marker([lat, lon], {
                                         icon: L.icon({
-                                            iconUrl: '{{ asset_path('img/map/IVAO/DEFAULT.png') }}',
+                                            iconUrl: '{{ asset_path('img/map/plane.png') }}',
                                             iconSize: [30, 30],
                                             iconAnchor: [15, 15],
                                             popupAnchor: [0, -15]
