@@ -88,6 +88,13 @@
                 type: 'get',
                 url: '{{ route('atis-map-data') }}',
                 success: function(data) {
+                    for (var i = 0; i < mapMarkers.length; i++) {
+                        map.removeLayer(mapMarkers[i]);
+                    }
+                    $('path.leaflet-interactive').remove();
+                    clients = [];
+                    onlineTransceivers = [];
+                    $('#atis-list').html('');
                     data.forEach(function (client) {
                         client['transceivers'].forEach(function (transceiver) {
                             var callsign = client.callsign;
@@ -162,6 +169,13 @@
                             onlineTransceivers.push({callsign: callsign, freq: frequency});
                         });
                     });
+                    
+                    if(pilotRings == 0) {
+                        $('path[stroke="#ce6262"]').hide();
+                    }
+                    if(atcRings == 0) {
+                        $('path[stroke="#418041"]').hide();
+                    }
 
                     if(mapMarkers.length > 0) {
                         map.fitBounds(L.featureGroup(mapMarkers).getBounds());
@@ -189,7 +203,7 @@
                         });
                         $('#online-count').html(clients.length + ' Voice Clients Connected');
                     } else {
-                        $('#atisList').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
+                        $('#atis-list').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
                         $('#online-count').html('0 Voice Clients Connected');
                     }
                 }
