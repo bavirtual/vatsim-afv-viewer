@@ -204,6 +204,7 @@
                             var callsign = client.callsign;
                             var name = client.member_name;
                             var frequency = transceiver.frequency;
+                            frequency = (frequency/1000000).toFixed(3);
                             var lat = transceiver.latDeg;
                             var lon = transceiver.lonDeg;
                             var msl = transceiver.altMslM;
