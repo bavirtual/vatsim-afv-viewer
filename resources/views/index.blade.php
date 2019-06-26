@@ -21,9 +21,9 @@
 
     <div class="row">
         <div class="col-md-3">
-            <section class="card">
-                <div class="card-content">
-                    <div class="card-body">
+            <section class="card" style="height: calc(100% - 1.875rem);">
+                <div class="card-content h-100">
+                    <div class="card-body h-100">
                         <button class="btn btn-sm" id="togglePilotRings">Toggle Pilot Rings</button>
                         <button class="btn btn-sm" id="toggleAtcRings">Toggle ATC Rings</button>
                         <br><br>
@@ -35,9 +35,9 @@
             </section>
         </div>
         <div class="col-md-9">
-            <section class="card">
-                <div class="card-content">
-                    <div class="card-body" id="flightMap" style="height: calc(100vh - 300px);"></div>
+            <section class="card" style="height: calc(100% - 1.875rem);">
+                <div class="card-content h-100">
+                    <div class="card-body h-100 rounded" id="flightMap" style="height: calc(100vh - 300px);"></div>
                 </div>
             </section>
         </div>
