@@ -44,6 +44,7 @@
     </div>
 
     <script>
+        firstLoad = true;
         pilotRings = true;
         atcRings = true;
 
@@ -178,7 +179,10 @@
                     }
 
                     if(mapMarkers.length > 0) {
-                        map.fitBounds(L.featureGroup(mapMarkers).getBounds());
+                        if(firstLoad == true) {
+                            map.fitBounds(L.featureGroup(mapMarkers).getBounds());
+                            firstLoad = false;
+                        }
                         onlineTransceivers.sort(function(a, b) {
                             return ((a.callsign < b.callsign) ? -1 : ((a.callsign > b.callsign) ? 1 : 0));
                         });
