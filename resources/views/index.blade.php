@@ -20,7 +20,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-12 col-md-3">
             <section class="card" style="height: calc(100% - 1.875rem);">
                 <div class="card-content h-100">
                     <div class="card-body h-100">
@@ -34,7 +34,7 @@
                 </div>
             </section>
         </div>
-        <div class="col-md-9">
+        <div class="col-12 col-md-9 mb-5 mb-md-0">
             <section class="card" style="height: calc(100% - 1.875rem);">
                 <div class="card-content h-100">
                     <div class="card-body h-100 rounded" id="flightMap" style="min-height: calc(100vh - 300px);"></div>
