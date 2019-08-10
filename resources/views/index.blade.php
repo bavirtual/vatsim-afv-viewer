@@ -37,7 +37,7 @@
         <div class="col-md-9">
             <section class="card" style="height: calc(100% - 1.875rem);">
                 <div class="card-content h-100">
-                    <div class="card-body h-100 rounded" id="flightMap" style="height: calc(100vh - 300px);"></div>
+                    <div class="card-body h-100 rounded" id="flightMap" style="min-height: calc(100vh - 300px);"></div>
                 </div>
             </section>
         </div>
