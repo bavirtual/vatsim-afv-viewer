@@ -90,11 +90,8 @@
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
-            <div class="col-md-6 col-12 mb-2">
+            <div class="col-12 mb-1 mt-3 mt-md-2 text-center text-md-left">
                 <h3 class="content-header-title">@yield('pageTitle', 'BAVMS')</h3>
-            </div>
-            <div class="col-md-6 col-12 mb-2 ">
-                @yield('pageHeaderRight')
             </div>
         </div>
         <div class="content-body">
