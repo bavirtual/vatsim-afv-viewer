@@ -54,7 +54,7 @@ class PageController extends Controller
                 $controller_data = $this->getControllerData($voice_client->callsign, $network_clients);
                 $voice_client->type = 'atis';
                 if($controller_data == null) {
-                    $voice_client->member_name = 'NOT FOUND';
+                    $voice_client->member_name = null;
                 } else {
                     $voice_client->member_name = $controller_data->member->name;
                 }

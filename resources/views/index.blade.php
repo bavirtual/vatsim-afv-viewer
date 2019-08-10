@@ -107,7 +107,9 @@
                             var msl = transceiver.altMslM;
 
                             var content = '<b>' + callsign +'</b><br>';
-                            content += '<b>' + name +'</b><br>';
+                            if(client.type != 'atis' || name != null){ // Doesn't show 'Not Found' for ATIS Bots
+                                content += '<b>' + name +'</b><br>';
+                            }
                             if(client.type == 'pilot') {
                                 content += client.altitude + 'ft<br>';
                                 content += client.route + '<br>';
