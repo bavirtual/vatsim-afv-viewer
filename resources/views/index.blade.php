@@ -26,6 +26,7 @@
                     <div class="card-body h-100">
                         <button class="btn btn-sm" id="togglePilotRings">Toggle Pilot Rings</button>
                         <button class="btn btn-sm" id="toggleAtcRings">Toggle ATC Rings</button>
+                        <button class="btn btn-sm" id="toggleVoiceOnly">Toggle VOI Only</button>
                         <br><br>
                         <div id="atis-list" style="height: calc(100vh - 300px); overflow: auto;">
 
@@ -47,6 +48,7 @@
         firstLoad = true;
         pilotRings = true;
         atcRings = true;
+        voiceOnly = false;
 
         var map = L.map('flightMap').setView([44.341393, -3.915340], 2);
         
@@ -85,6 +87,16 @@
             } else {
                 $('path[stroke="#418041"]').show();
                 atcRings = true;
+            }
+        });
+
+        $('#toggleVoiceOnly').click(function () {
+            if(voiceOnly == true) {
+                $('path[stroke="#00eaff"]').hide();
+                voiceOnly = false;
+            } else {
+                $('path[stroke="#00eaff"]').show();
+                voiceOnly = true;
             }
         });
 
@@ -189,7 +201,10 @@
                         var transceivers = data.other[callsign].transceivers;
                         transceivers.forEach(function(transceiver){
                             var frequency = (transceiver.frequency/1000000).toFixed(3);
+                            var content = '<b>' + callsign + '</b><br>';
+                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
                             frequencyList[callsign]['frequencies'].push(frequency);
+                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00eaff', weight: 1}).bindPopup(content).addTo(map);
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
@@ -200,6 +215,9 @@
                     }
                     if(atcRings == 0) {
                         $('path[stroke="#418041"]').hide();
+                    }
+                    if(voiceOnly == 0) {
+                        $('path[stroke="#00eaff"]').hide();
                     }
 
                     if(markers.length > 0 && firstLoad == true) {
