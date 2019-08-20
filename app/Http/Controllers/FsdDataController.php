@@ -36,7 +36,7 @@ class FsdDataController extends Controller
         try {
             $response = self::$client->request('GET', 'vatsim-data');
         } catch (TransferException $e) {
-            return response()->json(Cache::get('fsd_clients_latest', ['pilots' => [], 'controllers' => []])); // If API fails, return the latest data (or empty array if it doesn't exist)
+            return response()->json(Cache::get('fsd_clients_latest', ['pilots' => [], 'controllers' => [], 'other' => []])); // If API fails, return the latest data (or empty array if it doesn't exist)
         }
 
         $json = (string) $response->getBody();
