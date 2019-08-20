@@ -187,10 +187,6 @@
                         clients[callsign] = data.controllers[callsign];
                     }
 
-                    for(callsign in data.other){
-                        clients[callsign] = data.other[callsign];
-                    }
-
                     /*data.forEach(function (client) {
                         client['transceivers'].forEach(function (transceiver) {
                             var callsign = client.callsign;
@@ -299,6 +295,18 @@
                             }
                         }
 
+                        for(callsign in data.other){
+                            var frequencies = [];
+                            data.other[callsign].transceivers.forEach(function(transceiver){
+                                frequencies.push((transceiver.frequency/1000000).toFixed(3));
+                            });
+                            if (frequencies.length > 0){
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + frequencies.join(',') + '</h5>');
+                            } else {
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - No Freq.</h5>');
+                            }
+                        }
+
                         $('#online-count').html(Object.keys(clients).length + ' Voice Clients Connected');
                     } else if (markers.length > 0) {
                         if(firstLoad == true) {
@@ -316,6 +324,18 @@
                                 $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + frequencies.join(',') + '</h5>');
                             } else {
                                 $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + markers[callsign].frequency + ' [TXT Only]</h5>');
+                            }
+                        }
+
+                        for(callsign in data.other){
+                            var frequencies = [];
+                            data.other[callsign].transceivers.forEach(function(transceiver){
+                                frequencies.push((transceiver.frequency/1000000).toFixed(3));
+                            });
+                            if (frequencies.length > 0){
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + frequencies.join(',') + '</h5>');
+                            } else {
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - No Freq.</h5>');
                             }
                         }
                     } else {
