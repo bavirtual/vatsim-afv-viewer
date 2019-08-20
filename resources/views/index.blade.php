@@ -247,10 +247,10 @@
                     }
 
                     if (Object.keys(frequencyList).length == 0){
-                        $('#atis-list').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
+                        $('#atis-list').append('<h5 style="margin-bottom: 0;">No Clients</h5>');
                         $('#online-count').html('0 Voice Clients Connected');
                     } else {
-                        $('#online-count').html(Object.keys(frequencyList).length + ' Voice Clients Connected');
+                        $('#online-count').html(Object.keys(frequencyList).length + ' Clients Connected');
                     }
                 }
             });
