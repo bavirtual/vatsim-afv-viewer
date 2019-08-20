@@ -307,7 +307,7 @@
                             }
                         }
 
-                        $('#online-count').html((Object.keys(clients).length + data.other.length) + ' Voice Clients Connected');
+                        $('#online-count').html(Object.keys(clients).length + ' Voice Clients Connected');
                     } else if (markers.length > 0) {
                         if(firstLoad == true) {
                             map.fitBounds(L.featureGroup(markers).getBounds());
@@ -339,7 +339,7 @@
                             }
                         }
                         
-                        $('#online-count').html((Object.keys(clients).length + data.other.length) + ' Voice Clients Connected');
+                        $('#online-count').html(Object.keys(clients).length + ' Voice Clients Connected');
                     } else {
                         $('#atis-list').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
                         $('#online-count').html('0 Voice Clients Connected');
