@@ -278,14 +278,13 @@
                         $('path[stroke="#418041"]').hide();
                     }
 
-                    if(markers.length > 0) {
+                    if(ranges.length > 0) {
                         if(firstLoad == true) {
-                            map.fitBounds(L.featureGroup(markers).getBounds());
+                            map.fitBounds(L.featureGroup(ranges).getBounds());
                             firstLoad = false;
                         }
 
                         clients = sortOnKeys(clients);
-
                         // [{client: '', frequencies:['123.000','122.800']]]
                         for(callsign in clients){
                             // add the frequency to array
@@ -301,6 +300,24 @@
                         }
 
                         $('#online-count').html(Object.keys(clients).length + ' Voice Clients Connected');
+                    } else if (markers.length > 0) {
+                        if(firstLoad == true) {
+                            map.fitBounds(L.featureGroup(markers).getBounds());
+                            firstLoad = false;
+                        }
+                        
+                        for(callsign in markers){
+                            // add the frequency to array
+                            var frequencies = [];
+                            markers[callsign].transceivers.forEach(function(transceiver){
+                                frequencies.push((transceiver.frequency/1000000).toFixed(3));
+                            });
+                            if (frequencies.length > 0){
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + frequencies.join(',') + '</h5>');
+                            } else {
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + markers[callsign].frequency + ' [TXT Only]</h5>');
+                            }
+                        }
                     } else {
                         $('#atis-list').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
                         $('#online-count').html('0 Voice Clients Connected');
