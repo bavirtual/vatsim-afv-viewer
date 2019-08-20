@@ -160,22 +160,33 @@
 
                     for(callsign in data.controllers){
                         var content = '<b>' + callsign + '</b><br>';
-                            content += data.controllers[callsign].member.name + '<br>';
-                            content += data.controllers[callsign].frequency + '<br>';
                         
                         lat = data.controllers[callsign].latitude;
                         lon = data.controllers[callsign].longitude;
 
                         if(! callsign.includes('_ATIS')){
+                            content += data.controllers[callsign].frequency + '<br>';
+                            content += data.controllers[callsign].member.name + '<br>';
                             markers.push(L.marker([lat, lon], {
                                 icon: L.icon({
-                                    iconUrl: '{{ asset_path('img/map/green-pin.png') }}',
-                                    iconSize: [10, 16],
-                                    iconAnchor: [5, 16],
-                                    popupAnchor: [0, -16]
+                                    iconUrl: '{{ asset_path('img/map/atc.png') }}',
+                                    iconSize: [10, 18],
+                                    iconAnchor: [5, 18],
+                                    popupAnchor: [0, -18]
+                                })
+                            }).bindPopup(content).addTo(map));
+                        } else {
+                            content += data.controllers[callsign].frequency + '<br>';
+                            markers.push(L.marker([lat, lon], {
+                                icon: L.icon({
+                                    iconUrl: '{{ asset_path('img/map/weather.png') }}',
+                                    iconSize: [20, 12.05],
+                                    iconAnchor: [10, 6.025],
+                                    popupAnchor: [5, -6.025]
                                 })
                             }).bindPopup(content).addTo(map));
                         }
+                        
 
                         frequencyList[callsign] = {};
                         frequencyList[callsign]['frequencies'] = [];
@@ -202,6 +213,17 @@
                         transceivers.forEach(function(transceiver){
                             var frequency = (transceiver.frequency/1000000).toFixed(3);
                             var content = '<b>' + callsign + '</b><br>';
+                            if(callsign.includes('_ATIS')){
+                                content += frequency + '<br>';
+                                markers.push(L.marker([transceiver.latDeg, transceiver.lonDeg], {
+                                    icon: L.icon({
+                                        iconUrl: '{{ asset_path('img/map/weather.png') }}',
+                                        iconSize: [20, 12.05],
+                                        iconAnchor: [10, 6.025],
+                                        popupAnchor: [5, -6.025]
+                                    })
+                                }).bindPopup(content).addTo(map));
+                            }
                             var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
                             frequencyList[callsign]['frequencies'].push(frequency);
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00eaff', weight: 1}).bindPopup(content).addTo(map);
