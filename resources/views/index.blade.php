@@ -49,15 +49,25 @@
         atcRings = true;
 
         var map = L.map('flightMap').setView([44.341393, -3.915340], 2);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        
+        // Map Layers
+        var basic = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             subdomains: 'abcd',
             maxZoom: 19
-        }).addTo(map);
+        }).addTo(map),
+        streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }),
+        satellite = L.tileLayer(
+            'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+             attribution: '&copy; ' + '<a href="http://www.esri.com/">Esri</a>'
+        });
+        var maps = {"Basic": basic, "Streets": streets, "Satellite": satellite};
+        L.control.layers(maps).addTo(map);
 
-        mapMarkers = [];
-        onlineTransceivers = [];
-        clients = [];
-        reloadMapData();
+        ranges = [];
+        markers = [];
+        clients = {};
 
         $('#togglePilotRings').click(function () {
             if(pilotRings == true) {
@@ -79,6 +89,7 @@
             }
         });
 
+        reloadMapData();
         setInterval(function() {
             reloadMapData();
         }, 15000);
@@ -87,16 +98,100 @@
         function reloadMapData() {
             $.ajax({
                 type: 'get',
-                url: '{{ route('atis-map-data') }}',
+                url: '{{ route('test') }}',
                 success: function(data) {
-                    for (var i = 0; i < mapMarkers.length; i++) {
-                        map.removeLayer(mapMarkers[i]);
+                    for (var i = 0; i < markers.length; i++) {
+                        map.removeLayer(markers[i]);
                     }
+                    markers = [];
+                    for (var i = 0; i < ranges.length; i++) {
+                        map.removeLayer(ranges[i]);
+                    }
+                    ranges = [];
                     $('path.leaflet-interactive').remove();
-                    clients = [];
-                    onlineTransceivers = [];
-                    $('#atis-list').html('');
-                    data.forEach(function (client) {
+                    $('#atis-list').html(''); // Cleans the list
+
+
+                    for(callsign in data.pilots){
+                        var content = '<b>' + callsign + '</b><br>';
+                            content += data.pilots[callsign].member.name +'<br>';
+                            if (data.pilots[callsign].plan.departure && data.pilots[callsign].plan.arrival){
+                                content += data.pilots[callsign].plan.departure +' -> ' + data.pilots[callsign].plan.arrival + '<br>';
+                            } else {
+                                content += 'No Flightplan Sent<br>';
+                            }
+                            content += data.pilots[callsign].altitude + 'ft - GS' + data.pilots[callsign].speed + '<br>';
+                        
+                        lat = data.pilots[callsign].latitude;
+                        lon = data.pilots[callsign].longitude;
+
+                        markers.push(L.marker([lat, lon], {
+                            icon: L.icon({
+                                iconUrl: '{{ asset_path('img/map/plane.png') }}',
+                                iconSize: [30, 30],
+                                iconAnchor: [15, 15],
+                                popupAnchor: [0, -15]
+                            }),
+                            rotationAngle: data.pilots[callsign].heading,
+                            rotationOrigin: 'center'
+                        }).bindPopup(content).addTo(map));
+
+                        var transceivers = data.pilots[callsign].transceivers;
+                        transceivers.forEach(function(transceiver){
+                            //var RadiusMeters = (1.25 * Math.sqrt(transceiver.altMslM * 3.28084)) * 1852;
+                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
+                            ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map));
+                        });
+
+                        clients[callsign] = data.pilots[callsign];
+                    }
+
+                    for(callsign in data.controllers){
+                        var content = '<b>' + callsign + '</b><br>';
+                            content += data.controllers[callsign].member.name + '<br>';
+                            content += data.controllers[callsign].frequency + '<br>';
+                        
+                        lat = data.controllers[callsign].latitude;
+                        lon = data.controllers[callsign].longitude;
+
+                        if(! callsign.includes('_ATIS')){
+                            markers.push(L.marker([lat, lon], {
+                                icon: L.icon({
+                                    iconUrl: '{{ asset_path('img/map/green-pin.png') }}',
+                                    iconSize: [10, 16],
+                                    iconAnchor: [5, 16],
+                                    popupAnchor: [0, -16]
+                                })
+                            }).bindPopup(content).addTo(map));
+
+                            var transceivers = data.controllers[callsign].transceivers;
+                            transceivers.forEach(function(transceiver){
+                                var content = '<b>' + callsign + '</b><br>';
+                                    content += data.controllers[callsign].member.name + '<br>';
+                                    content += (transceiver.frequency/1000000).toFixed(3) + '<br>';
+                                //var RadiusMeters = (1.25 * Math.sqrt(transceiver.altMslM * 3.28084)) * 1852;
+                                var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
+                                ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map));
+
+                                /*markers.push(L.marker([transceiver.latDeg, transceiver.lonDeg], {
+                                    icon: L.icon({
+                                        iconUrl: '{{ asset_path('img/map/green-pin.png') }}',
+                                        iconSize: [10, 16],
+                                        iconAnchor: [5, 16],
+                                        popupAnchor: [0, -16]
+                                    })
+                                }).bindPopup(content).addTo(map));*/
+                            });
+                        }
+
+                        clients[callsign] = data.controllers[callsign];
+                    }
+
+                    for(callsign in data.other){
+                        clients[callsign] = data.other[callsign];
+                    }
+
+                    /*data.forEach(function (client) {
                         client['transceivers'].forEach(function (transceiver) {
                             var callsign = client.callsign;
                             var name = client.member_name;
@@ -171,7 +266,10 @@
                             mapMarkers.push(marker);
                             onlineTransceivers.push({callsign: callsign, freq: frequency});
                         });
-                    });
+                        
+                        //
+
+                    });*/
                     
                     if(pilotRings == 0) {
                         $('path[stroke="#ce6262"]').hide();
@@ -180,40 +278,48 @@
                         $('path[stroke="#418041"]').hide();
                     }
 
-                    if(mapMarkers.length > 0) {
+                    if(markers.length > 0) {
                         if(firstLoad == true) {
-                            map.fitBounds(L.featureGroup(mapMarkers).getBounds());
+                            map.fitBounds(L.featureGroup(markers).getBounds());
                             firstLoad = false;
                         }
-                        onlineTransceivers.sort(function(a, b) {
-                            return ((a.callsign < b.callsign) ? -1 : ((a.callsign > b.callsign) ? 1 : 0));
-                        });
+
+                        clients = sortOnKeys(clients);
 
                         // [{client: '', frequencies:['123.000','122.800']]]
-                        onlineTransceivers.forEach(function(onlineTransceiver) {
-                            var clientIndex = clients.findIndex(x => x.callsign === onlineTransceiver.callsign);
-                            if(clientIndex > -1) {
-                                // add the frequency to array
-                                var client = clients.find(x => x.callsign === onlineTransceiver.callsign);
-                                clients.splice(clientIndex, 1);
-                                client['frequencies'].push(onlineTransceiver.freq);
-                                clients.push(client);
+                        for(callsign in clients){
+                            // add the frequency to array
+                            var frequencies = [];
+                            clients[callsign].transceivers.forEach(function(transceiver){
+                                frequencies.push((transceiver.frequency/1000000).toFixed(3));
+                            });
+                            if (frequencies.length > 0){
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + frequencies.join(',') + '</h5>');
                             } else {
-                                // create a new element
-                                clients.push({callsign: onlineTransceiver.callsign, frequencies: [onlineTransceiver.freq]});
+                                $('#atis-list').append('<h5 style="margin-bottom: 0;">' + callsign + ' - ' + clients[callsign].frequency + ' [TXT Only]</h5>');
                             }
-                        });
+                        }
 
-                        clients.forEach(function (client) {
-                            $('#atis-list').append('<h5 style="margin-bottom: 0;">' + client.callsign + ' - ' + client['frequencies'].join(',') + '</h5>');
-                        });
-                        $('#online-count').html(clients.length + ' Voice Clients Connected');
+                        $('#online-count').html(Object.keys(clients).length + ' Voice Clients Connected');
                     } else {
                         $('#atis-list').append('<h5 style="margin-bottom: 0;">No Voice Clients</h5>');
                         $('#online-count').html('0 Voice Clients Connected');
                     }
                 }
             });
+        }
+
+        function sortOnKeys(dict) {
+            var sorted = [];
+            for(var key in dict) {
+                sorted[sorted.length] = key;
+            }
+            sorted.sort();
+            var tempDict = {};
+            for(var i = 0; i < sorted.length; i++) {
+                tempDict[sorted[i]] = dict[sorted[i]];
+            }
+            return tempDict;
         }
 
     </script>
