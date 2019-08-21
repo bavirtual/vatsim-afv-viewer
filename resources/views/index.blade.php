@@ -109,7 +109,7 @@
         function reloadMapData() {
             $.ajax({
                 type: 'get',
-                url: '{{ route('test') }}',
+                url: '{{ route('atis-map-data') }}',
                 success: function(data) {
                     for (var i = 0; i < markers.length; i++) {
                         map.removeLayer(markers[i]);

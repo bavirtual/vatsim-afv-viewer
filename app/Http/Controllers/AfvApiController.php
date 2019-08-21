@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\ClientError;
+use GuzzleHttp\Exception\ServerError;
 use Illuminate\Support\Facades\Cache;
 use GuzzleHttp\Exception\TransferException;
 
@@ -35,7 +37,7 @@ class AfvApiController extends Controller
 
         try {
             $response = self::$client->request('GET', 'network/online/callsigns');
-        } catch (TransferException $e) {
+        } catch (TransferException | ClientError  | ServerError $e) {
             return Cache::get('afv_clients_latest', []); // If API fails, return the latest data (or empty array if it doesn't exist)
         }
 

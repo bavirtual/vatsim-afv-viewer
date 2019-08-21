@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\ClientError;
+use GuzzleHttp\Exception\ServerError;
 use Illuminate\Support\Facades\Cache;
 use GuzzleHttp\Exception\TransferException;
 
@@ -35,7 +37,7 @@ class FsdDataController extends Controller
 
         try {
             $response = self::$client->request('GET', 'vatsim-data');
-        } catch (TransferException $e) {
+        } catch (TransferException | ClientError  | ServerError $e) {
             return response()->json(Cache::get('fsd_clients_latest', ['pilots' => [], 'controllers' => [], 'other' => []])); // If API fails, return the latest data (or empty array if it doesn't exist)
         }
 
