@@ -14,7 +14,7 @@ class PageController extends Controller
 
         if (array_key_exists($callsign, $data['controllers'])){ $data = $data['controllers'][$callsign]->transceivers; }
         elseif (array_key_exists($callsign, $data['pilots'])) { $data = $data['pilots'][$callsign]->transceivers; }
-        elseif (array_key_exists($callsign, $data['other'])) { $data = $data['other'][$callsign]->transceivers; }
+        elseif (array_key_exists($callsign, $data['other'])) { $data = $data['other'][$callsign]['transceivers']; }
         else { $data = []; }
 
         return view('full_map', compact('data'));
