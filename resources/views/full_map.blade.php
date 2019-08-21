@@ -25,8 +25,6 @@
         });
 
         map.fitBounds(L.featureGroup(circles).getBounds());
-
-        
     </script>
 </body>
 </html>
