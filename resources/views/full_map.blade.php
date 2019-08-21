@@ -4,6 +4,11 @@
     <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet.js') }}"></script>
     <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet-geodesic.js') }}"></script>
     <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet-rotation.js') }}"></script>
+    <style>
+        .leaflet-interactive{
+            cursor: default;
+        }
+    </style>
 </head>
 <body style="width:100%;height:100%;margin:0;padding:0;">
     <div id="map" style="min-height: 100%;min-width:100%;"></div>
@@ -24,7 +29,9 @@
             circles.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00ffff', weight: 0}).addTo(map));
         });
 
-        map.fitBounds(L.featureGroup(circles).getBounds());
+        if(circles.length > 0){
+            map.fitBounds(L.featureGroup(circles).getBounds());
+        }
     </script>
 </body>
 </html>
