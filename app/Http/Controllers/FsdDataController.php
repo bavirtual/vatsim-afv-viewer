@@ -31,7 +31,7 @@ class FsdDataController extends Controller
     }
 
 
-    public static function getClients()
+    public static function getClients($array = false)
     {
         self::init();
 
@@ -45,7 +45,11 @@ class FsdDataController extends Controller
         $clients = self::addAfvData($json);
         Cache::put('fsd_clients_latest', $clients); // Cache in case the AFV server fails to respond
 
-        return response()->json($clients);
+        if($array){
+            return $clients;
+        } else {
+            return response()->json($clients);
+        }
     }
 
 
