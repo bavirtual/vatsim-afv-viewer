@@ -53,13 +53,6 @@
         var map = L.map('flightMap').setView([44.341393, -3.915340], 2);
         
         // Map Layers
-        @if(Request::has('dark'))
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        	subdomains: 'abcd',
-        	maxZoom: 19
-        }).addTo(map);
-        @else
         var basic = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             subdomains: 'abcd',
             maxZoom: 19
@@ -73,7 +66,6 @@
         });
         var maps = {"Basic": basic, "Streets": streets, "Satellite": satellite};
         L.control.layers(maps).addTo(map);
-        @endif
 
         markers = [];
         frequencyList = [];
@@ -249,7 +241,7 @@
                     if(voiceOnly == 0) {
                         $('path[stroke="#00eaff"]').hide();
                     }
-
+                    
                     if(markers.length > 0 && firstLoad == true) {
                         map.fitBounds(L.featureGroup(markers).getBounds());
                         firstLoad = false;

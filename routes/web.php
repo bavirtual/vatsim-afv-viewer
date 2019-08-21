@@ -15,4 +15,6 @@ Route::get('/', 'PageController@index')->name('index');
 
 Route::get('/atis-map-data', 'PageController@atisMapData')->name('atis-map-data');
 
+Route::get('full_map', 'PageController@fullMap');
+
 Route::get('test', 'FsdDataController@getClients')->name('test');
