@@ -22,7 +22,7 @@
         atcRings = true;
         voiceOnly = false;
 
-        var map = L.map('map', { attributionControl: false, zoomControl:false }).setView([0, 0], 2);
+        var map = L.map('map', { attributionControl: false, scrollWheelZoom: false, dragging: false, zoomControl:false }).setView([0, 0], 2);
         {{--var stations = @json($data);--}}
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
