@@ -9,7 +9,7 @@
     <div id="map" style="min-height: 100%;min-width:100%;"></div>
 
     <script type="text/javascript">
-        var map = L.map('map', { attributionControl: false, scrollWheelZoom: false, dragging: false, zoomControl: false }).setView([0, 0], 2);
+        var map = L.map('map', { attributionControl: false, scrollWheelZoom: false, doubleClickZoom: false, dragging: false, zoomControl: false }).setView([0, 0], 2);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         	subdomains: 'abcd',
         	maxZoom: 8,
