@@ -35,16 +35,18 @@ class AfvApiController extends Controller
     {
         self::init();
 
-        try {
-            $response = self::$client->request('GET', 'network/online/callsigns');
-        } catch (TransferException | ClientError  | ServerError $e) {
-            return Cache::get('afv_clients_latest', []); // If API fails, return the latest data (or empty array if it doesn't exist)
-        }
-
-        $json = (string) $response->getBody();
-        $clients = self::reformat($json);
- 
-        Cache::put('afv_clients_latest', $clients); // Cache in case the AFV server fails to respond
+        $clients = Cache::remember('afv_clients', 5, function () {            
+            try {
+                $response = self::$client->request('GET', 'network/online/callsigns');
+            } catch (TransferException | ClientError  | ServerError $e) {
+                return Cache::get('afv_clients_latest', []); // If API fails, return the latest data (or empty array if it doesn't exist)
+            }
+    
+            $json = (string) $response->getBody();
+            $clients = self::reformat($json);
+            Cache::put('afv_clients_latest', $clients); // Cache in case the AFV server fails to respond
+            return $clients;
+        });
 
         return $clients;
     }
