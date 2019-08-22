@@ -61,10 +61,14 @@
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }),
         satellite = L.tileLayer(
-            'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
              attribution: '&copy; ' + '<a href="http://www.esri.com/">Esri</a>'
         });
-        var maps = {"Basic": basic, "Streets": streets, "Satellite": satellite};
+        dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        	subdomains: 'abcd'
+        });
+        var maps = {"Basic": basic, "Streets": streets, "Satellite": satellite, "Dark": dark};
         L.control.layers(maps).addTo(map);
 
         markers = [];
