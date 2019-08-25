@@ -34,21 +34,24 @@ class FsdDataController extends Controller
     public static function getClients($array = false)
     {
         self::init();
+        
+        $clients = Cache::remember('fsd_clients', 30, function () { 
+            try {
+                $response = self::$client->request('GET', 'vatsim-data');
+            } catch (TransferException | ClientError  | ServerError $e) {
+                return Cache::get('fsd_clients_latest', ['pilots' => [], 'controllers' => [], 'other' => []]); // If API fails, return the latest data (or empty array if it doesn't exist)
+            }
 
-        try {
-            $response = self::$client->request('GET', 'vatsim-data');
-        } catch (TransferException | ClientError  | ServerError $e) {
-            return response()->json(Cache::get('fsd_clients_latest', ['pilots' => [], 'controllers' => [], 'other' => []])); // If API fails, return the latest data (or empty array if it doesn't exist)
-        }
-
-        $json = (string) $response->getBody();
-        $clients = self::addAfvData($json);
-        Cache::put('fsd_clients_latest', $clients); // Cache in case the AFV server fails to respond
-
-        if($array){
+            $json = (string) $response->getBody();
+            $clients = json_encode(self::addAfvData($json));
+            Cache::put('fsd_clients_latest', $clients); // Cache in case the AFV server fails to respond
             return $clients;
+        });
+
+        if ($array == true){
+            return json_decode($clients);
         } else {
-            return response()->json($clients);
+            return response()->json(json_decode($clients));
         }
     }
 
