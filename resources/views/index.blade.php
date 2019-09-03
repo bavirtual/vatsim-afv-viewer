@@ -154,6 +154,9 @@
                         frequencyList[callsign]['onFSD'] = true;
                         var transceivers = data.pilots[callsign].transceivers;
                         transceivers.forEach(function(transceiver){
+                            if (transceiver.heightMslM <= 0){
+                                transceiver.heightMslM = 50;
+                            }
                             var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map);
@@ -197,6 +200,9 @@
                         frequencyList[callsign]['onFSD'] = true;
                         var transceivers = data.controllers[callsign].transceivers;
                         transceivers.forEach(function(transceiver){
+                            if (transceiver.heightMslM <= 0){
+                                transceiver.heightMslM = 50;
+                            }
                             var frequency = (transceiver.frequency/1000000).toFixed(3);
                             var content = '<b>' + callsign + '</b><br>';
                                 content += data.controllers[callsign].member.name + '<br>';
@@ -215,6 +221,9 @@
                         frequencyList[callsign]['onFSD'] = false;
                         var transceivers = data.other[callsign].transceivers;
                         transceivers.forEach(function(transceiver){
+                            if (transceiver.heightMslM <= 0){
+                                transceiver.heightMslM = 50;
+                            }
                             var frequency = (transceiver.frequency/1000000).toFixed(3);
                             var content = '<b>' + callsign + '</b><br>';
                             if(callsign.includes('_ATIS')){
