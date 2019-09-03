@@ -25,7 +25,7 @@
         var circles = [];
         
         transceivers.forEach(function(transceiver){
-            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
+            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
             circles.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00ffff', weight: 0}).addTo(map));
         });
 

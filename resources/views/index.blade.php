@@ -154,7 +154,7 @@
                         frequencyList[callsign]['onFSD'] = true;
                         var transceivers = data.pilots[callsign].transceivers;
                         transceivers.forEach(function(transceiver){
-                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
+                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map);
                             frequencyList[callsign]['frequencies'].push((transceiver.frequency/1000000).toFixed(3));
@@ -201,7 +201,7 @@
                             var content = '<b>' + callsign + '</b><br>';
                                 content += data.controllers[callsign].member.name + '<br>';
                                 content += frequency + '<br>';
-                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
+                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map);
                             frequencyList[callsign]['frequencies'].push(frequency);
@@ -228,7 +228,7 @@
                                     })
                                 }).bindPopup(content).addTo(map));
                             }
-                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.altMslM);
+                            var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
                             frequencyList[callsign]['frequencies'].push(frequency);
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00eaff', weight: 1}).bindPopup(content).addTo(map);
                         });
