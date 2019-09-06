@@ -157,10 +157,14 @@
                             if (transceiver.heightMslM <= 0){
                                 transceiver.heightMslM = 50;
                             }
+                            var frequency = (transceiver.frequency/1000000).toFixed(3);
                             var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
+                            if(frequency == 122.800 && RadiusMeters > 27780){ // UNICOM Max Range = 15nm => 27780m
+                                RadiusMeters = 27780;
+                            }
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map);
-                            frequencyList[callsign]['frequencies'].push((transceiver.frequency/1000000).toFixed(3));
+                            frequencyList[callsign]['frequencies'].push(frequency);
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
@@ -205,9 +209,15 @@
                             }
                             var frequency = (transceiver.frequency/1000000).toFixed(3);
                             var content = '<b>' + callsign + '</b><br>';
+                            if(! callsign.includes('_ATIS')){
                                 content += data.controllers[callsign].member.name + '<br>';
+                            }
                                 content += frequency + '<br>';
+
                             var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
+                            if(frequency == 122.800 && RadiusMeters > 27780){ // UNICOM Max Range = 15nm => 27780m
+                                RadiusMeters = 27780;
+                            }
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map);
                             frequencyList[callsign]['frequencies'].push(frequency);
