@@ -35,7 +35,7 @@ class FsdDataController extends Controller
     {
         self::init();
         
-        $clients = Cache::remember('fsd_clients', 30, function () { 
+        $clients = Cache::remember('fsd_clients', 10, function () { 
             try {
                 $response = self::$client->request('GET', 'vatsim-data');
             } catch (TransferException | ClientError  | ServerError $e) {
