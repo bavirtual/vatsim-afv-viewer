@@ -284,7 +284,11 @@
                             if(frequencyList[callsign].frequencies.length > 0){
                                 details += frequencyList[callsign].frequencies.join(', ');
                             } else if (frequencyList[callsign].fsdFreq != null) {
-                                details += frequencyList[callsign].fsdFreq + ' [TXT Only]';
+                                if(callsign.substr(0, 1) == '*') {
+                                    details += frequencyList[callsign].fsdFreq;
+                                } else {
+                                    details += frequencyList[callsign].fsdFreq + ' [TXT Only]';
+                                }
                             } else {
                                 details += 'No frequency';
                             }
