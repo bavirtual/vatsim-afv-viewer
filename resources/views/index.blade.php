@@ -51,7 +51,7 @@
         voiceOnly = false;
 
         var map = L.map('flightMap').setView([44.341393, -3.915340], 2);
-        
+
         // Map Layers
         var basic = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             subdomains: 'abcd',
@@ -108,8 +108,8 @@
         setInterval(function() {
             reloadMapData();
         }, 15000);
-        
-        
+
+
         function reloadMapData() {
             $.ajax({
                 type: 'get',
@@ -134,7 +134,7 @@
                                 content += 'No Flightplan Sent<br>';
                             }
                             content += data.pilots[callsign].altitude + 'ft - GS' + data.pilots[callsign].speed + '<br>';
-                        
+
                         lat = data.pilots[callsign].latitude;
                         lon = data.pilots[callsign].longitude;
 
@@ -164,14 +164,17 @@
                             }
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map);
-                            frequencyList[callsign]['frequencies'].push(frequency);
+
+                            if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
+                                frequencyList[callsign]['frequencies'].push(frequency);
+                            }
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
 
                     for(callsign in data.controllers){
                         var content = '<b>' + callsign + '</b><br>';
-                        
+
                         lat = data.controllers[callsign].latitude;
                         lon = data.controllers[callsign].longitude;
 
@@ -197,7 +200,7 @@
                                 })
                             }).bindPopup(content).addTo(map));
                         }
-                        
+
 
                         frequencyList[callsign] = {};
                         frequencyList[callsign]['frequencies'] = [];
@@ -220,7 +223,9 @@
                             }
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map));
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map);
-                            frequencyList[callsign]['frequencies'].push(frequency);
+                            if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
+                                frequencyList[callsign]['frequencies'].push(frequency);
+                            }
                         });
                         frequencyList[callsign]['fsdFreq'] = data.controllers[callsign].frequency;
                     }
@@ -248,13 +253,15 @@
                                 }).bindPopup(content).addTo(map));
                             }
                             var RadiusMeters = 4193.18014745372 * Math.sqrt(transceiver.heightMslM);
-                            frequencyList[callsign]['frequencies'].push(frequency);
+                            if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
+                                frequencyList[callsign]['frequencies'].push(frequency);
+                            }
                             L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00eaff', weight: 1}).bindPopup(content).addTo(map);
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
 
-                    
+
                     if(pilotRings == 0) {
                         $('path[stroke="#ce6262"]').hide();
                     }
@@ -264,7 +271,7 @@
                     if(voiceOnly == 0) {
                         $('path[stroke="#00eaff"]').hide();
                     }
-                    
+
                     if(markers.length > 0 && firstLoad == true) {
                         map.fitBounds(L.featureGroup(markers).getBounds());
                         firstLoad = false;
