@@ -53,7 +53,10 @@
         atcRings = true;
         voiceOnly = false;
 
-        var map = L.map('flightMap').setView([44.341393, -3.915340], 2);
+        var map = L.map('flightMap').setView([44.341393, -3.915340], 2).setMaxBounds([
+            [-90, -180],
+            [90, 180]
+        ]);
 
         // Map Layers
         var basic = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -138,7 +141,7 @@
 
                     markers = [];
                     frequencyList = {};
-                    $('path.leaflet-interactive').remove(); // Remove ranges
+                    $('path.leaflet-interactive').not('[stroke="#9B9B9B"]').remove(); // Remove ranges
                     $('#atis-list').html(''); // Cleans the list
 
 
