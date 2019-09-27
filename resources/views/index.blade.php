@@ -7,6 +7,7 @@
 
 @section('page_css')
     <link rel="stylesheet" type="text/css" href="{{ app_asset_path('vendors/leaflet/leaflet.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ app_asset_path('vendors/leaflet/leaflet-easybutton.css') }}">
 @endsection
 
 
@@ -14,6 +15,8 @@
     <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet.js') }}"></script>
     <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet-geodesic.js') }}"></script>
     <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet-rotation.js') }}"></script>
+    <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/leaflet-easybutton.js') }}"></script>
+    <script type="text/javascript" src="{{ app_asset_path('vendors/leaflet/map-addons/firs.js') }}"></script>
 @endsection
 
 
@@ -70,6 +73,20 @@
         });
         var maps = {"Basic": basic, "Streets": streets, "Satellite": satellite, "Dark": dark};
         L.control.layers(maps).addTo(map);
+        
+        if(cookieExists('show-firs')) {
+            var showFIRs = getCookie('show-firs') == 'true';
+            if(showFIRs == true) {
+                showFIRsLoad();
+            }
+        } else {
+            setCookie('show-firs', 'false');
+            var showFIRs = false;
+        }
+        
+        L.easyButton('<span class="target">FIRs</span>', function(){
+            toggleFIRs();
+        }, 'Toggle FIRs').addTo(map);
 
         markers = [];
         frequencyList = [];
@@ -323,6 +340,97 @@
                 tempDict[sorted[i]] = dict[sorted[i]];
             }
             return tempDict;
+        }
+        
+        function showFIRsLoad() {
+            firs.forEach(function(fir) {
+                var coordinateGroups = fir.geometry.coordinates;
+                var lineLatLon = [];
+                if(coordinateGroups.length === 1) {
+                    var line = [];
+                    coordinateGroups[0].forEach(function(coordinate) {
+                        line.push(new L.LatLng(coordinate[1], coordinate[0]));
+                    });
+                    lineLatLon.push(line);
+                } else {
+                    coordinateGroups.forEach(function(coordinateGroup) {
+                        var line = [];
+                        coordinateGroup[0].forEach(function(coordinate) {
+                            line.push(new L.LatLng(coordinate[1], coordinate[0]));
+                        });
+                        lineLatLon.push(line);
+                    });
+                }
+                lineLatLon.forEach(function(line) {
+                    L.polyline(line, {
+                        weight: 0.4,
+                        color: '#9B9B9B',
+                    }).addTo(map);
+                });
+            });
+        }
+        
+        function toggleFIRs() {
+            showFIRs = !showFIRs;
+            if(showFIRs === true) {
+                setCookie('show-firs', 'true');
+                firs.forEach(function(fir) {
+                    var coordinateGroups = fir.geometry.coordinates;
+                    var lineLatLon = [];
+                    if(coordinateGroups.length === 1) {
+                        var line = [];
+                        coordinateGroups[0].forEach(function(coordinate) {
+                            line.push(new L.LatLng(coordinate[1], coordinate[0]));
+                        });
+                        lineLatLon.push(line);
+                    } else {
+                        coordinateGroups.forEach(function(coordinateGroup) {
+                            var line = [];
+                            coordinateGroup[0].forEach(function(coordinate) {
+                                line.push(new L.LatLng(coordinate[1], coordinate[0]));
+                            });
+                            lineLatLon.push(line);
+                        });
+                    }
+                    lineLatLon.forEach(function(line) {
+                        L.polyline(line, {
+                            weight: 0.4,
+                            color: '#9B9B9B',
+                        }).addTo(map);
+                    });
+                });
+            } else {
+                setCookie('show-firs', 'false');
+                $('path[stroke="#9B9B9B"]').remove();
+            }
+        }
+        
+        function cookieExists(cookie) {
+            var myCookie = getCookie(cookie);
+            return myCookie != null;
+        }
+        
+        function setCookie(cname, cvalue, exdays = 365) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            } 
+            return "";
         }
 
     </script>
