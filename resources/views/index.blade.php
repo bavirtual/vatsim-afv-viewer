@@ -25,8 +25,8 @@
     <div class="row">
         <div class="col-12 col-md-3">
             <section class="card" style="height: calc(100% - 1.875rem);">
-                <div class="card-content h-100">
-                    <div class="card-body h-100">
+                <div class="card-content h-100 bg-dark rounded">
+                    <div class="card-body h-100 bg-dark rounded">
                         <button class="btn btn-sm" id="togglePilotRings">Toggle Pilot Rings</button>
                         <button class="btn btn-sm" id="toggleAtcRings">Toggle ATC Rings</button>
                         <button class="btn btn-sm" id="toggleVoiceOnly">Toggle VOI Only</button>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-12 col-md-9 mb-5 mb-md-0">
             <section class="card" style="height: calc(100% - 1.875rem);">
-                <div class="card-content h-100">
+                <div class="card-content h-100 bg-black">
                     <div class="card-body h-100 rounded" id="flightMap" style="min-height: calc(100vh - 300px);"></div>
                 </div>
             </section>
@@ -62,7 +62,7 @@
         var basic = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             subdomains: 'abcd',
             maxZoom: 19
-        }).addTo(map),
+        }),
         streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }),
@@ -73,8 +73,8 @@
         dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         	subdomains: 'abcd'
-        });
-        var maps = {"Basic": basic, "Streets": streets, "Satellite": satellite, "Dark": dark};
+        }).addTo(map);
+        var maps = {"Dark": dark, "Basic": basic, "Streets": streets, "Satellite": satellite};
         L.control.layers(maps).addTo(map);
         
         if(cookieExists('show-firs')) {
@@ -183,7 +183,7 @@
                                 RadiusMeters = 27780;
                             }
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map));
-                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ce6262', weight: 1}).bindPopup(content).addTo(map);
+                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#19e119', weight: 1}).bindPopup(content).addTo(map);
 
                             if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
                                 frequencyList[callsign]['frequencies'].push(frequency);
@@ -242,7 +242,7 @@
                                 RadiusMeters = 27780;
                             }
                             //ranges.push(L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map));
-                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#418041', weight: 1}).bindPopup(content).addTo(map);
+                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#19e1e1', weight: 1}).bindPopup(content).addTo(map);
                             if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
                                 frequencyList[callsign]['frequencies'].push(frequency);
                             }
@@ -276,20 +276,20 @@
                             if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
                                 frequencyList[callsign]['frequencies'].push(frequency);
                             }
-                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#00eaff', weight: 1}).bindPopup(content).addTo(map);
+                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#19e119', weight: 1}).bindPopup(content).addTo(map);
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
 
 
                     if(pilotRings == 0) {
-                        $('path[stroke="#ce6262"]').hide();
+                        $('path[stroke="#19e119"]').hide();
                     }
                     if(atcRings == 0) {
-                        $('path[stroke="#418041"]').hide();
+                        $('path[stroke="#19e1e1"]').hide();
                     }
                     if(voiceOnly == 0) {
-                        $('path[stroke="#00eaff"]').hide();
+                        $('path[stroke="#19e119"]').hide();
                     }
 
                     if(markers.length > 0 && firstLoad == true) {
@@ -319,11 +319,11 @@
                                 details += 'No frequency';
                             }
                         }
-                        $('#atis-list').append('<h5 style="margin-bottom: 0;"><b>' + callsign + '</b> - ' + details + '</h5>');
+                        $('#atis-list').append('<h5 style="margin-bottom: 0; color: white;"><b>' + callsign + '</b> - ' + details + '</h5>');
                     }
 
                     if (Object.keys(frequencyList).length == 0){
-                        $('#atis-list').append('<h5 style="margin-bottom: 0;">No Clients</h5>');
+                        $('#atis-list').append('<h5 style="margin-bottom: 0; color: white;">No Clients</h5>');
                         $('#online-count').html('0 Clients Connected');
                     } else {
                         $('#online-count').html(Object.keys(frequencyList).length + ' Clients Connected');

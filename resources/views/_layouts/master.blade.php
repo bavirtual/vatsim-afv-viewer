@@ -73,13 +73,13 @@
 </head>
 <body class="horizontal-layout horizontal-menu 2-columns ssmenu-expanded" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 <!-- fixed-top-->
-<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-static-top navbar-light navbar-brand-center">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-static-top navbar-light navbar-brand-center bg-black">
     <div class="navbar-wrapper">
         <div class="navbar-header" style="position: relative;">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item">
                     <a class="navbar-brand" href="/">
-                        <img class="brand-logo" alt="VATSIM Logo" src="{{ asset_path('img/vatsim_0.png') }}">
+                        <img class="brand-logo" alt="VATSIM Logo" src="{{ asset_path('img/vatsim_white.png') }}">
                     </a>
                 </li>
             </ul>
@@ -88,10 +88,10 @@
 </nav>
 
 <div class="app-content content">
-    <div class="content-wrapper">
+    <div class="content-wrapper bg-black">
         <div class="content-header row">
             <div class="col-12 mb-1 mt-3 mt-md-2 text-center text-md-left">
-                <h3 class="content-header-title">@yield('pageTitle', 'BAVMS')</h3>
+                <h3 class="content-header-title text-white">@yield('pageTitle', 'BAVMS')</h3>
             </div>
         </div>
         <div class="content-body">
