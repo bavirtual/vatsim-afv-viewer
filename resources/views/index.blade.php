@@ -116,10 +116,10 @@
 
         $('#toggleVoiceOnly').click(function () {
             if(voiceOnly == true) {
-                $('path[stroke="#19e100"]').hide();
+                $('path[stroke="#ff0000"]').hide();
                 voiceOnly = false;
             } else {
-                $('path[stroke="#19e100"]').show();
+                $('path[stroke="#ff0000"]').show();
                 voiceOnly = true;
             }
         });
@@ -276,7 +276,7 @@
                             if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
                                 frequencyList[callsign]['frequencies'].push(frequency);
                             }
-                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#19e100', weight: 1}).bindPopup(content).addTo(map);
+                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#ff0000', weight: 1}).bindPopup(content).addTo(map);
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
@@ -289,7 +289,7 @@
                         $('path[stroke="#19e1e1"]').hide();
                     }
                     if(voiceOnly == 0) {
-                        $('path[stroke="#19e100"]').hide();
+                        $('path[stroke="#ff0000"]').hide();
                     }
 
                     if(markers.length > 0 && firstLoad == true) {
