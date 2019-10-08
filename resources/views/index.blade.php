@@ -96,30 +96,30 @@
 
         $('#togglePilotRings').click(function () {
             if(pilotRings == true) {
-                $('path[stroke="#ce6262"]').hide();
+                $('path[stroke="#19e119"]').hide();
                 pilotRings = false;
             } else {
-                $('path[stroke="#ce6262"]').show();
+                $('path[stroke="#19e119"]').show();
                 pilotRings = true;
             }
         });
 
         $('#toggleAtcRings').click(function () {
             if(atcRings == true) {
-                $('path[stroke="#418041"]').hide();
+                $('path[stroke="#19e1e1"]').hide();
                 atcRings = false;
             } else {
-                $('path[stroke="#418041"]').show();
+                $('path[stroke="#19e1e1"]').show();
                 atcRings = true;
             }
         });
 
         $('#toggleVoiceOnly').click(function () {
             if(voiceOnly == true) {
-                $('path[stroke="#00eaff"]').hide();
+                $('path[stroke="#19e100"]').hide();
                 voiceOnly = false;
             } else {
-                $('path[stroke="#00eaff"]').show();
+                $('path[stroke="#19e100"]').show();
                 voiceOnly = true;
             }
         });
