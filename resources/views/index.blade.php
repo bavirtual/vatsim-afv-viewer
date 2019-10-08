@@ -276,7 +276,7 @@
                             if(!frequencyList[callsign]['frequencies'].includes(frequency)) {
                                 frequencyList[callsign]['frequencies'].push(frequency);
                             }
-                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#19e119', weight: 1}).bindPopup(content).addTo(map);
+                            L.circle([transceiver.latDeg, transceiver.lonDeg], {radius: RadiusMeters, fillOpacity: .2, color: '#19e100', weight: 1}).bindPopup(content).addTo(map);
                         });
                         frequencyList[callsign]['fsdFreq'] = null;
                     }
@@ -289,7 +289,7 @@
                         $('path[stroke="#19e1e1"]').hide();
                     }
                     if(voiceOnly == 0) {
-                        $('path[stroke="#19e119"]').hide();
+                        $('path[stroke="#19e100"]').hide();
                     }
 
                     if(markers.length > 0 && firstLoad == true) {
