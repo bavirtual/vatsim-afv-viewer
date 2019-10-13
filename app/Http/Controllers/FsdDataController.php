@@ -15,8 +15,8 @@ class FsdDataController extends Controller
     // This class/controller handles all requests to    //
     // the AFV Voice server.                            //
     //////////////////////////////////////////////////////
-    private static $domain = 'https://afv-beta.vatsim.net/';
-    // private static $domain = 'http://eu.data.vatsim.net/';
+    // private static $domain = 'https://afv-beta.vatsim.net/';
+    private static $domain = 'http://eu.data.vatsim.net/';
     private static $timeout = 5; // In seconds
 
     protected static $client; // GuzzleHttp\Client instance
@@ -38,8 +38,8 @@ class FsdDataController extends Controller
         
         $clients = Cache::remember('fsd_clients', 10, function () { 
             try {
-                $response = self::$client->request('GET', 'vatsim-data');
-                // $response = self::$client->request('GET', 'vatsim-data.json');
+                // $response = self::$client->request('GET', 'vatsim-data');
+                $response = self::$client->request('GET', 'vatsim-data.json');
             } catch (TransferException | ClientError  | ServerError $e) {
                 return Cache::get('fsd_clients_latest', ['pilots' => [], 'controllers' => [], 'other' => []]); // If API fails, return the latest data (or empty array if it doesn't exist)
             }
@@ -87,7 +87,7 @@ class FsdDataController extends Controller
             $callsign = $controller->callsign;
             unset($controller->callsign);
             
-            // $controller->frequency = number_format((((float) '1'.$controller->frequency) / 1000), 3, '.', '');
+            $controller->frequency = number_format((((float) '1'.$controller->frequency) / 1000), 3, '.', '');
             
             $output['controllers'][$callsign] = $controller;
             unset($clients->controllers->$key); // Free memory
