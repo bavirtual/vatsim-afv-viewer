@@ -71,7 +71,7 @@
 @yield('page_js')
 <!-- END MODERN JS-->
 </head>
-<body class="horizontal-layout horizontal-menu 2-columns ssmenu-expanded" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
+<body class="horizontal-layout horizontal-menu 2-columns ssmenu-expanded bg-black" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 <!-- fixed-top-->
 <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-static-top navbar-light navbar-brand-center bg-black">
     <div class="navbar-wrapper">

@@ -17,3 +17,6 @@ Route::get('atis-map-data', 'FsdDataController@getClients')->name('atis-map-data
 
 Route::get('full_map', 'PageController@fullMap');
 
+Route::get('details', 'DetailController@data');
+Route::get('details/{frequency}', 'DetailController@freq');
+
