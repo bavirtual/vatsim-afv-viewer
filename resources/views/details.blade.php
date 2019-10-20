@@ -12,7 +12,7 @@
             <section class="card" style="height: calc(100% - 1.875rem);">
                 <div class="card-content h-100 bg-dark rounded">
                     <div class="card-body h-100 bg-dark rounded">
-                        <h5 style="color: white">TOTAL Unicom Transceiver Count: {{ $unicomTransceiverCount + $unicomWestNATransceiverCount + $unicomEastNASATransceiverCount + $unicomEUTransceiverCount + $unicomOtherTransceiverCount}}</h5>
+                        <h5 style="color: white">TOTAL Unicom Transceiver Count: {{ $unicomTransceiverCount + $unicomWestNATransceiverCount + $unicomEastNASATransceiverCount + $unicomEastEUTransceiverCount + $unicomWestEUTransceiverCount + $unicomOtherTransceiverCount}}</h5>
                         <hr>
                         <h5 style="color: white">Regular Unicom Transceiver Count: {{ $unicomTransceiverCount }}</h5>
                         <h5 style="color: white">The following client(s) have more than 1 Regular UNICOM Transceiver:</h5>

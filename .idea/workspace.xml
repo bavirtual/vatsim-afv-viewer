@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="976d7cdd-fdc4-4613-88b0-01d55261edca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DetailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DetailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/details.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,18 +15,6 @@
     <execution>
       <executable />
     </execution>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>background-color: rgba(255, 160, 0, 1);</find>
-      <find>onlineATIS</find>
-      <find>onlineClients</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>background-color: rgb(46, 235, 255);</replace>
-      <replace>onlineClients</replace>
-      <replace>onlineTransceivers</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -226,7 +213,7 @@
       <workItem from="1560095650137" duration="613000" />
       <workItem from="1560378562227" duration="119000" />
       <workItem from="1571428351687" duration="6662000" />
-      <workItem from="1571511771551" duration="1679000" />
+      <workItem from="1571511771551" duration="1757000" />
     </task>
     <servers />
   </component>
