@@ -38,10 +38,18 @@
                             @endforeach
                         </ul>
                         <hr>
-                        <h5 style="color: white">Unicom EU Transceiver Count: {{ $unicomEUTransceiverCount }}</h5>
-                        <h5 style="color: white">The following client(s) have more than 1 Unicom EU Transceiver:</h5>
+                        <h5 style="color: white">Unicom West EU Transceiver Count: {{ $unicomWestEUTransceiverCount }}</h5>
+                        <h5 style="color: white">The following client(s) have more than 1 West Unicom EU Transceiver:</h5>
                         <ul style="color: white;">
-                            @foreach($unicomEUTransceivers as $callsign => $count)
+                            @foreach($unicomWestEUTransceivers as $callsign => $count)
+                                @if($count > 1) <li style="color: white;">{{ $callsign }} - {{ $count }}</li> @endif
+                            @endforeach
+                        </ul>
+                        <hr>
+                        <h5 style="color: white">Unicom East EU Transceiver Count: {{ $unicomEastEUTransceiverCount }}</h5>
+                        <h5 style="color: white">The following client(s) have more than 1 East Unicom EU Transceiver:</h5>
+                        <ul style="color: white;">
+                            @foreach($unicomEastEUTransceivers as $callsign => $count)
                                 @if($count > 1) <li style="color: white;">{{ $callsign }} - {{ $count }}</li> @endif
                             @endforeach
                         </ul>
