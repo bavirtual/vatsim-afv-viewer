@@ -12,13 +12,15 @@ class DetailController extends Controller
         $unicomTransceivers = [];
         $unicomWestNATransceivers = [];
         $unicomEastNASATransceivers = [];
-        $unicomEUTransceivers = [];
+        $unicomWestEUTransceivers = [];
+        $unicomEastEUTransceivers = [];
         $unicomOtherTransceivers = [];
 
         $unicomTransceiverCount = 0;
         $unicomWestNATransceiverCount = 0;
         $unicomEastNASATransceiverCount = 0;
-        $unicomEUTransceiverCount = 0;
+        $unicomWestEUTransceiverCount = 0;
+        $unicomEastEUTransceiverCount = 0;
         $unicomOtherTransceiverCount = 0;
 
         foreach($afvData as $callsign => $afvDatum) {
@@ -45,13 +47,20 @@ class DetailController extends Controller
                     }
                 }
                 if($transceiver->frequency == 122800003) {
-                    if(isset($unicomEUTransceivers[$callsign])) {
-                        $unicomEUTransceivers[$callsign] = $unicomEUTransceivers[$callsign] + 1;
+                    if(isset($unicomWestEUTransceivers[$callsign])) {
+                        $unicomWestEUTransceivers[$callsign] = $unicomWestEUTransceivers[$callsign] + 1;
                     } else {
-                        $unicomEUTransceivers[$callsign] = 1;
+                        $unicomWestEUTransceivers[$callsign] = 1;
                     }
                 }
                 if($transceiver->frequency == 122800004) {
+                    if(isset($unicomEastEUTransceivers[$callsign])) {
+                        $unicomEastEUTransceivers[$callsign] = $unicomEastEUTransceivers[$callsign] + 1;
+                    } else {
+                        $unicomEastEUTransceivers[$callsign] = 1;
+                    }
+                }
+                if($transceiver->frequency == 122800005) {
                     if(isset($unicomOtherTransceivers[$callsign])) {
                         $unicomOtherTransceivers[$callsign] = $unicomOtherTransceivers[$callsign] + 1;
                     } else {
@@ -73,15 +82,19 @@ class DetailController extends Controller
             $unicomEastNASATransceiverCount = $unicomEastNASATransceiverCount + $eastNASATransceiver;
         }
 
-        foreach($unicomEUTransceivers as $EUTransceiver) {
-            $unicomEUTransceiverCount = $unicomEUTransceiverCount + $EUTransceiver;
+        foreach($unicomWestEUTransceivers as $WestEUTransceiver) {
+            $unicomWestEUTransceiverCount = $unicomWestEUTransceiverCount + $EUTransceiver;
+        }
+
+        foreach($unicomEastEUTransceivers as $EUTransceiver) {
+            $unicomEastEUTransceiverCount = $unicomEastEUTransceiverCount + $EUTransceiver;
         }
 
         foreach($unicomOtherTransceivers as $otherTransceiver) {
             $unicomOtherTransceiverCount = $unicomOtherTransceiverCount + $otherTransceiver;
         }
 
-        return view('details', compact('unicomWestNATransceivers','unicomEastNASATransceivers', 'unicomEUTransceivers', 'unicomOtherTransceivers', 'unicomWestNATransceiverCount', 'unicomEastNASATransceiverCount', 'unicomEUTransceiverCount', 'unicomOtherTransceiverCount', 'unicomTransceivers', 'unicomTransceiverCount'));
+        return view('details', compact('unicomWestNATransceivers','unicomEastNASATransceivers', 'unicomWestEUTransceivers', 'unicomEastEUTransceivers', 'unicomOtherTransceivers', 'unicomWestNATransceiverCount', 'unicomEastNASATransceiverCount', 'unicomEastEUTransceiverCount', 'unicomWestEUTransceiverCount', 'unicomOtherTransceiverCount', 'unicomTransceivers', 'unicomTransceiverCount'));
     }
 
     public function unicom()
