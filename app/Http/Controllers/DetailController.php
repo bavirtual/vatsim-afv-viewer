@@ -83,11 +83,11 @@ class DetailController extends Controller
         }
 
         foreach($unicomWestEUTransceivers as $WestEUTransceiver) {
-            $unicomWestEUTransceiverCount = $unicomWestEUTransceiverCount + $EUTransceiver;
+            $unicomWestEUTransceiverCount = $unicomWestEUTransceiverCount + $WestEUTransceiver;
         }
 
-        foreach($unicomEastEUTransceivers as $EUTransceiver) {
-            $unicomEastEUTransceiverCount = $unicomEastEUTransceiverCount + $EUTransceiver;
+        foreach($unicomEastEUTransceivers as $EastEUTransceiver) {
+            $unicomEastEUTransceiverCount = $unicomEastEUTransceiverCount + $EastEUTransceiver;
         }
 
         foreach($unicomOtherTransceivers as $otherTransceiver) {

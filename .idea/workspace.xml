@@ -3,44 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="976d7cdd-fdc4-4613-88b0-01d55261edca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/A32X.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/A380.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B737.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B747.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B757.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B767.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B772.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B77W.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/B787.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/CONC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/DEFAULT.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/img/map/plane.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/IVAO/GA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/A32X.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/A380.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B737.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B747.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B757.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B767.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B772.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B77W.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/B787.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/CONC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/DEFAULT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/OFFLINE/GA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/SIMFEST/B747.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/A32X.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/A380.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B737.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B747.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B757.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B767.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B772.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B77W.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/B787.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/CONC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/DEFAULT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/map/VATSIM/GA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DetailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DetailController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,58 +16,6 @@
     <execution>
       <executable />
     </execution>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1776">
-              <caret line="111" column="78" selection-start-line="111" selection-start-column="78" selection-end-line="111" selection-end-column="78" />
-              <folding>
-                <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/img/map/red-pin.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/img/map/plane.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/img/map/pin.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -120,28 +31,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/resources/sass/app.scss" />
-        <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/API/AirfieldController.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/helpers.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ATISController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MainController.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/public/app-assets/css/bootstrap-extended.css" />
-        <option value="$PROJECT_DIR$/resources/views/atis-map.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/_layouts/master.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PageController.php" />
-        <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
-      </list>
-    </option>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -232,80 +121,12 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1428" />
-    <option name="y" value="-12" />
-    <option name="width" value="1461" />
-    <option name="height" value="1872" />
-  </component>
+  <component name="ProjectId" id="1SOIjHCUQOzb20B4TGewUtv0qIY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vatsim.bavirtual.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vatsim.bavirtual.local" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="map" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/img/map" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -313,6 +134,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Development\afv-map.vatsim.local\resources\views" />
       <recent name="C:\inetpub\vatsim.bavirtual.local\public\assets\img\map" />
       <recent name="C:\inetpub\vatsim.bavirtual.local\public\assets\img" />
       <recent name="C:\inetpub\vatsim.bavirtual.local\app\Http\Controllers" />
@@ -403,189 +225,25 @@
       <workItem from="1559990661114" duration="9800000" />
       <workItem from="1560095650137" duration="613000" />
       <workItem from="1560378562227" duration="119000" />
+      <workItem from="1571428351687" duration="6662000" />
+      <workItem from="1571511771551" duration="1679000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26091000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1935" height="1255" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4950761" visible="true" weight="0.23076923" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.5049239" side_tool="true" weight="0.11959958" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23813787" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3294539" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/AirfieldController.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ATISController.php" />
-    <entry file="file://$PROJECT_DIR$/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/console.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app-assets/css/bootstrap-extended.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18451" selection-start-column="18451" selection-end-column="18451" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app-assets/css/app.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="928">
-          <caret column="11869" selection-start-column="11869" selection-end-column="17308" />
-          <folding>
-            <element signature="e#337337#337891#2" expanded="true" />
-            <element signature="e#337929#338483#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/img/vatsim_0.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/img/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app-assets/css/bootstrap-extended.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="810" column="18" selection-start-line="810" selection-start-column="18" selection-end-line="810" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/_layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1888">
-          <caret line="118" column="85" selection-start-line="118" selection-start-column="85" selection-end-line="118" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/atis-map.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="80" column="21" selection-start-line="77" selection-start-column="20" selection-end-line="80" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/img/map/pin.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/img/map/red-pin.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/img/map/plane.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1776">
-          <caret line="111" column="78" selection-start-line="111" selection-start-column="78" selection-end-line="111" selection-end-column="78" />
-          <folding>
-            <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
