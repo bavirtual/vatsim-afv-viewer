@@ -10,7 +10,7 @@ class PageController extends Controller
     public function fullMap(Request $request)
     {
         $callsign = $request->input('callsign', '');
-        $data = FsdDataController::getClients(true);
+        $data = (new FsdDataController())->getClients(true, true);
 
         if (array_key_exists($callsign, $data->controllers)){ $data = $data->controllers->$callsign->transceivers; }
         elseif (array_key_exists($callsign, $data->pilots)) { $data = $data->pilots->$callsign->transceivers; }

@@ -134,6 +134,7 @@
             $.ajax({
                 type: 'get',
                 url: '{{ route('atis-map-data') }}',
+                data : {'_token': $('meta[name="csrf-token"]').attr('content')},
                 success: function(data) {
                     for (var i = 0; i < markers.length; i++) {
                         map.removeLayer(markers[i]);

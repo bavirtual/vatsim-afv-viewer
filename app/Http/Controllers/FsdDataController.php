@@ -22,8 +22,11 @@ class FsdDataController extends Controller
     protected static $client; // GuzzleHttp\Client instance
 
 
-    protected static function init()
-    {        
+    public function __construct($local = false)
+    {
+        if (! $local) {
+            $this->middleware('csrf.get');
+        }
         self::$client = new Client([
             'base_uri' => self::$domain,
             'timeout' => self::$timeout,
@@ -32,10 +35,8 @@ class FsdDataController extends Controller
     }
 
 
-    public static function getClients($array = false)
+    public function getClients($array = false)
     {
-        self::init();
-        
         $clients = Cache::remember('fsd_clients', 10, function () { 
             try {
                 // $response = self::$client->request('GET', 'vatsim-data');
@@ -45,7 +46,7 @@ class FsdDataController extends Controller
             }
 
             $json = (string) $response->getBody();
-            $clients = json_encode(self::addAfvData($json));
+            $clients = json_encode($this->addAfvData($json));
             Cache::put('fsd_clients_latest', $clients); // Cache in case the AFV server fails to respond
             return $clients;
         });
@@ -58,7 +59,7 @@ class FsdDataController extends Controller
     }
 
 
-    protected static function addAfvData($json)
+    protected function addAfvData($json)
     {
         $clients = json_decode($json);
         $afvData = AfvApiController::getClients();
