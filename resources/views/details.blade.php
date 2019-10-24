@@ -12,7 +12,7 @@
             <section class="card" style="height: calc(100% - 1.875rem);">
                 <div class="card-content h-100 bg-dark rounded">
                     <div class="card-body h-100 bg-dark rounded">
-                        <h5 style="color: white">TOTAL Unicom Transceiver Count: {{ $unicomTransceiverCount + $unicomWestNATransceiverCount + $unicomEastNASATransceiverCount + $unicomEastEUTransceiverCount + $unicomWestEUTransceiverCount + $unicomOtherTransceiverCount}}</h5>
+                        <h5 style="color: white">TOTAL Unicom Transceiver Count: {{ $unicomTransceiverCount + $unicomWestNATransceiverCount + $unicomEastNASATransceiverCount + $unicomEastEUTransceiverCount + $unicomCentralEUTransceiverCount + $unicomWestEUTransceiverCount + $unicomOtherTransceiverCount}}</h5>
                         <hr>
                         <h5 style="color: white">Regular Unicom Transceiver Count: {{ $unicomTransceiverCount }}</h5>
                         <h5 style="color: white">The following client(s) have more than 1 Regular UNICOM Transceiver:</h5>
@@ -42,6 +42,14 @@
                         <h5 style="color: white">The following client(s) have more than 1 West Unicom EU Transceiver:</h5>
                         <ul style="color: white;">
                             @foreach($unicomWestEUTransceivers as $callsign => $count)
+                                @if($count > 1) <li style="color: white;">{{ $callsign }} - {{ $count }}</li> @endif
+                            @endforeach
+                        </ul>
+                        <hr>
+                        <h5 style="color: white">Unicom Central EU Transceiver Count: {{ $unicomCentralEUTransceiverCount }}</h5>
+                        <h5 style="color: white">The following client(s) have more than 1 Central Unicom EU Transceiver:</h5>
+                        <ul style="color: white;">
+                            @foreach($unicomCentralEUTransceivers as $callsign => $count)
                                 @if($count > 1) <li style="color: white;">{{ $callsign }} - {{ $count }}</li> @endif
                             @endforeach
                         </ul>
