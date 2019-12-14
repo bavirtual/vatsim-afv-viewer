@@ -88,7 +88,7 @@ class FsdDataController extends Controller
             $callsign = $controller->callsign;
             unset($controller->callsign);
             
-            $controller->frequency = number_format((((float) '1'.$controller->frequency) / 1000), 3, '.', '');
+            $controller->frequency = '1' . substr($controller->frequency, 0, 2) . '.' . substr($controller->frequency, 2);
             
             $output['controllers'][$callsign] = $controller;
             unset($clients->controllers->$key); // Free memory
