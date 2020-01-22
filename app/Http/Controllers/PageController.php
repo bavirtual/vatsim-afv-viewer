@@ -12,9 +12,9 @@ class PageController extends Controller
         $callsign = $request->input('callsign', '');
         $data = (new FsdDataController())->getClients(true, true);
 
-        if (array_key_exists($callsign, $data->controllers)){ $data = $data->controllers->$callsign->transceivers; }
-        elseif (array_key_exists($callsign, $data->pilots)) { $data = $data->pilots->$callsign->transceivers; }
-        elseif (array_key_exists($callsign, $data->other)) { $data = $data->other->$callsign->transceivers; }
+        if (isset($data->controllers[$callsign])){ $data = $data->controllers->$callsign->transceivers; }
+        elseif (isset($data->pilots[$callsign])) { $data = $data->pilots->$callsign->transceivers; }
+        elseif (isset($data->other[$callsign])) { $data = $data->other->$callsign->transceivers; }
         else { $data = []; }
 
         return view('full_map', compact('data'));
