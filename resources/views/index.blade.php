@@ -76,7 +76,7 @@
         }).addTo(map);
         var maps = {"Dark": dark, "Basic": basic, "Streets": streets, "Satellite": satellite};
         L.control.layers(maps).addTo(map);
-        
+
         if(cookieExists('show-firs')) {
             var showFIRs = getCookie('show-firs') == 'true';
             if(showFIRs == true) {
@@ -86,7 +86,7 @@
             setCookie('show-firs', 'false');
             var showFIRs = false;
         }
-        
+
         L.easyButton('<span class="target">FIRs</span>', function(){
             toggleFIRs();
         }, 'Toggle FIRs').addTo(map);
@@ -148,13 +148,13 @@
 
                     for(callsign in data.pilots){
                         var content = '<b>' + callsign + '</b><br>';
-                            content += data.pilots[callsign].member.name +'<br>';
-                            if (data.pilots[callsign].plan.departure && data.pilots[callsign].plan.arrival){
-                                content += data.pilots[callsign].plan.departure +' -> ' + data.pilots[callsign].plan.arrival + '<br>';
+                            content += data.pilots[callsign].realname +'<br>';
+                            if (data.pilots[callsign].planned_depairport && data.pilots[callsign].planed_destairport){
+                                content += data.pilots[callsign].planned_depairport +' -> ' + data.pilots[callsign].planed_destairport + '<br>';
                             } else {
                                 content += 'No Flightplan Sent<br>';
                             }
-                            content += data.pilots[callsign].altitude + 'ft - GS' + data.pilots[callsign].speed + '<br>';
+                            content += data.pilots[callsign].altitude + 'ft - GS' + data.pilots[callsign].groundspeed + '<br>';
 
                         lat = data.pilots[callsign].latitude;
                         lon = data.pilots[callsign].longitude;
@@ -201,7 +201,7 @@
 
                         if(! callsign.includes('_ATIS')){
                             content += data.controllers[callsign].frequency + '<br>';
-                            content += data.controllers[callsign].member.name + '<br>';
+                            content += data.controllers[callsign].realname + '<br>';
                             markers.push(L.marker([lat, lon], {
                                 icon: L.icon({
                                     iconUrl: '{{ asset_path('img/map/atc.png') }}',
@@ -234,7 +234,7 @@
                             var frequency = (transceiver.frequency/1000000).toFixed(3);
                             var content = '<b>' + callsign + '</b><br>';
                             if(! callsign.includes('_ATIS')){
-                                content += data.controllers[callsign].member.name + '<br>';
+                                content += data.controllers[callsign].realname + '<br>';
                             }
                                 content += frequency + '<br>';
 
@@ -345,7 +345,7 @@
             }
             return tempDict;
         }
-        
+
         function showFIRsLoad() {
             firs.forEach(function(fir) {
                 var coordinateGroups = fir.geometry.coordinates;
@@ -373,7 +373,7 @@
                 });
             });
         }
-        
+
         function toggleFIRs() {
             showFIRs = !showFIRs;
             if(showFIRs === true) {
@@ -408,19 +408,19 @@
                 $('path[stroke="#9B9B9B"]').remove();
             }
         }
-        
+
         function cookieExists(cookie) {
             var myCookie = getCookie(cookie);
             return myCookie != null;
         }
-        
+
         function setCookie(cname, cvalue, exdays = 365) {
             var d = new Date();
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
             var expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
-        
+
         function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -433,7 +433,7 @@
                 if (c.indexOf(name) == 0) {
                     return c.substring(name.length, c.length);
                 }
-            } 
+            }
             return "";
         }
 
