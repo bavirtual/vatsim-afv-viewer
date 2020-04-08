@@ -149,8 +149,8 @@
                     for(callsign in data.pilots){
                         var content = '<b>' + callsign + '</b><br>';
                             content += data.pilots[callsign].realname +'<br>';
-                            if (data.pilots[callsign].planned_depairport && data.pilots[callsign].planed_destairport){
-                                content += data.pilots[callsign].planned_depairport +' -> ' + data.pilots[callsign].planed_destairport + '<br>';
+                            if (data.pilots[callsign].planned_depairport && data.pilots[callsign].planned_destairport){
+                                content += data.pilots[callsign].planned_depairport +' -> ' + data.pilots[callsign].planned_destairport + '<br>';
                             } else {
                                 content += 'No Flightplan Sent<br>';
                             }
